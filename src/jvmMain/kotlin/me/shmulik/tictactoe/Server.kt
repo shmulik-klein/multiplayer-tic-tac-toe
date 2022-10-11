@@ -71,7 +71,7 @@ fun main() {
             webSocket("/rooms/{roomId}") {
                 val logger = call.application.log
                 val roomId = call.parameters["roomId"]
-                logger.info("A player joins room: $roomId")
+                logger.info("A player joined room: $roomId")
                 rooms[roomId]!!.numOfPlayers++
                 var shouldListen = true
                 while (shouldListen) {
@@ -96,7 +96,7 @@ fun main() {
                         }
                     sendSerialized(rooms[roomId]!!)
                     withContext(Dispatchers.IO) {
-                        TimeUnit.SECONDS.sleep(1)
+                        TimeUnit.MILLISECONDS.sleep(20)
                     }
                 }
                 logger.info("A player left room: $roomId")

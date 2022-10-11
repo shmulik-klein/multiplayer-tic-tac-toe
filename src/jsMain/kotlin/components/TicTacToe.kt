@@ -147,6 +147,9 @@ val TicTacToe = FC<Props> {
                     h3 {
                         +"Last move: ${room.lastMove}"
                     }
+                    h3 {
+                        +"Winner: ${room.winner}"
+                    }
                     onClick = { joinRoom(room.id) }
                 }
             }
